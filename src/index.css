@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: 27 31 36;
+  --paper: 246 247 245;
+  --surface: 255 255 255;
+  --signal: 242 169 59;
+  --circuit: 46 110 142;
+  --breaker: 60 139 93;
+  --fault: 192 57 43;
+  --line: 223 226 222;
+  --muted: 106 113 120;
+}
+
+.dark {
+  --ink: 246 247 245;
+  --paper: 21 24 28;
+  --surface: 30 34 39;
+  --circuit: 91 155 189;
+  --breaker: 92 174 125;
+  --fault: 224 87 74;
+  --line: 55 61 68;
+  --muted: 148 156 163;
+}
+
+html { -webkit-font-smoothing: antialiased; }
+body { @apply bg-paper text-ink font-sans; line-height: 1.5; }
+h1, h2, h3, h4 { @apply font-display; line-height: 1.2; }
+*:focus-visible { outline: 2px solid rgb(var(--circuit)); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+@keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+.skeleton {
+  @apply rounded bg-line/60;
+  background-image: linear-gradient(90deg, transparent, rgb(var(--surface) / 0.7), transparent);
+  background-size: 400px 100%; background-repeat: no-repeat; animation: shimmer 1.4s infinite linear;
+}
