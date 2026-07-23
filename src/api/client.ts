@@ -26,7 +26,7 @@ export { toListItem } from '@/api/mockData';
 const delay = (ms = 350) => new Promise((r) => setTimeout(r, ms + Math.random() * 250));
 
 async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(`/api/${path}`, {
+  const res = await fetch(`/api/v1/${path}`, {
     headers: { 'Content-Type': 'application/json' },
     ...options,
   });
